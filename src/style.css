@@ -4,7 +4,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
 }
 
 .container {
@@ -12,8 +13,7 @@ body {
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  width: 400px;
-  overflow-x: auto;
+  width: 600px;
 }
 
 h1 {
@@ -54,10 +54,16 @@ button:hover {
   color: #333;
 }
 
+.tabela-container {
+  max-height: 600px;
+  overflow-y: auto;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 }
 
 th, td {
