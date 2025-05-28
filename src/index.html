@@ -12,12 +12,19 @@
 
     <label for="capital">Capital Inicial (R$):</label>
     <input type="number" id="capital" placeholder="1000">
-
+    
+    <label for="aporte">Aporte Mensal (R$):</label>
+    <input type="number" id="aporte" placeholder="200">
+    
     <label for="taxa">Taxa de Juros (% ao mês):</label>
     <input type="number" id="taxa" placeholder="1">
 
     <label for="periodo">Período (meses):</label>
     <input type="number" id="periodo" placeholder="12">
+
+
+    <label for="imposto">Imposto (% sobre rendimento):</label>
+    <input type="number" id="imposto" placeholder="22.5">
 
     <button onclick="calcularInvestimento()">Calcular</button>
 
@@ -29,8 +36,9 @@
           <tr>
             <th>Mês</th>
             <th>Rendimento Bruto (R$)</th>
-            <th>IR (22,5%) (R$)</th>
+            <th>IR (%) (R$)</th>
             <th>Rendimento Líquido (R$)</th>
+            <th>Aporte (R$)</th>
             <th>Saldo (R$)</th>
           </tr>
         </thead>

@@ -2,11 +2,13 @@ function calcularInvestimento() {
   const capital = parseFloat(document.getElementById('capital').value);
   const taxa = parseFloat(document.getElementById('taxa').value) / 100;
   const periodo = parseInt(document.getElementById('periodo').value);
+  const aporte = parseFloat(document.getElementById('aporte').value);
+  const impostoPercentual = parseFloat(document.getElementById('imposto').value) / 100;
 
   const resultado = document.getElementById('resultado');
   const detalhes = document.getElementById('detalhes').getElementsByTagName('tbody')[0];
 
-  if (isNaN(capital) || isNaN(taxa) || isNaN(periodo)) {
+  if (isNaN(capital) || isNaN(taxa) || isNaN(periodo) || isNaN(aporte) || isNaN(impostoPercentual)) {
     resultado.innerText = "Por favor, preencha todos os campos corretamente.";
     detalhes.innerHTML = '';
     return;
@@ -17,10 +19,11 @@ function calcularInvestimento() {
 
   for (let mes = 1; mes <= periodo; mes++) {
     const rendimentoBruto = saldo * taxa;
-    const imposto = rendimentoBruto * 0.225; // 22,5%
+    const imposto = rendimentoBruto * impostoPercentual; // imposto variável
     const rendimentoLiquido = rendimentoBruto - imposto;
 
-    saldo += rendimentoLiquido;
+    saldo += rendimentoLiquido; // adiciona rendimento líquido
+    saldo += aporte;           // adiciona aporte mensal
 
     const row = document.createElement('tr');
 
@@ -36,6 +39,9 @@ function calcularInvestimento() {
     const cellLiquido = document.createElement('td');
     cellLiquido.textContent = rendimentoLiquido.toFixed(2);
 
+    const cellAporte = document.createElement('td');
+    cellAporte.textContent = aporte.toFixed(2);
+
     const cellSaldo = document.createElement('td');
     cellSaldo.textContent = saldo.toFixed(2);
 
@@ -43,6 +49,7 @@ function calcularInvestimento() {
     row.appendChild(cellBruto);
     row.appendChild(cellIR);
     row.appendChild(cellLiquido);
+    row.appendChild(cellAporte);
     row.appendChild(cellSaldo);
 
     detalhes.appendChild(row);
